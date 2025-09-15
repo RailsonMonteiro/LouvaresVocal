@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Móvel</title>
+    <style>
+         body {
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(#ffffff,#bec7d4, #384767);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        #movingLogo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 50px;
+            pointer-events: none;
+        }
+
+        .blink {
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba(253, 0, 0, 0.593); /* cor fraquinha */
+            animation: blink 1s infinite;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="movingLogo" src="logo.png" alt="Logo">
+    <div class="blink">🚧 EM BREVE 🚧<br> 🚧PÁGINA EM CONSTRUÇÃO 🚧</div>
+
+    <script>
+        const logo = document.getElementById('movingLogo');
+
+        // Velocidade inicial (em px por frame)
+        let dx = Math.random() * 1.5 + 1; // Horizontal
+        let dy = Math.random() * 1.5 + 1; // Vertical
+
+        // Direção aleatória
+        dx *= Math.random() < 0.5 ? 1 : -1;
+        dy *= Math.random() < 0.5 ? 1 : -1;
+
+        function moveLogo() {
+            let rect = logo.getBoundingClientRect();
+            let logoWidth = rect.width;
+            let logoHeight = rect.height;
+
+            let maxX = window.innerWidth - logoWidth;
+            let maxY = window.innerHeight - logoHeight;
+
+            let currentX = rect.left;
+            let currentY = rect.top;
+
+            // Atualiza posição
+            let newX = currentX + dx;
+            let newY = currentY + dy;
+
+            // Verifica colisão com bordas e muda direção aleatoriamente
+            if (newX <= 0 || newX >= maxX) {
+                dx = -dx * (Math.random() * 0.5 + 0.75); // Inverte e muda velocidade aleatória
+            }
+            if (newY <= 0 || newY >= maxY) {
+                dy = -dy * (Math.random() * 0.5 + 0.75);
+            }
+
+            // Atualiza a posição da imagem
+            logo.style.left = Math.max(0, Math.min(maxX, newX)) + 'px';
+            logo.style.top = Math.max(0, Math.min(maxY, newY)) + 'px';
+
+            requestAnimationFrame(moveLogo);
+        }
+
+        moveLogo();
+    </script>
+</body>
+</html>
