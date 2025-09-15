@@ -45,7 +45,7 @@
         }
 
         #Logo {
-            width: 90%;
+            width: 80%;
             height: auto;
             margin-bottom: 100px;
         }
@@ -128,6 +128,34 @@
             width: 20px;
             height: 20px;
         }
+        .action {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .saiba-mais {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+        .saiba-mais {
+            color: #013a63;
+            background-color: #a9d3fd;
+        }
+        .saiba-mais:hover {
+            background-color: #95c5e7;
+        }
 
         @media (min-width: 475px) {
             .container {
@@ -171,6 +199,11 @@
             <div style="color: #cc0000;font-size: 12px;">contato via instagram</div>
             <p>Louvares Vocal é um ministério de louvor e adoração, <br> dedicado a levar a mensagem de Cristo através da música. 
                 <br> Junte-se a nós nessa jornada de fé e louvor!</p>
+        </div>
+        <div class="action">
+            <a class="saiba-mais" href="#" target="_blank" rel="noopener">
+                Saiba mais sobre nós
+            </a>
         </div>
         <footer style="text-align: center;align-items: end; padding: 0px;margin-bottom: 10px;margin-top: 30%; color: #002c4c; font-size: 10px;">
             <p>Louvares Vocal &copy; 2025. Todos os direitos reservados</p>
