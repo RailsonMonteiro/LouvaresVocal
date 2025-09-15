@@ -2,13 +2,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Louvares Vocal</title>
     <link rel="icon" href="Logo.png" sizes="32">
     <style>
        :root {
-            --max-width: 500px; /* largura máxima em telas grandes */
-            --main-padding: 16px;
+            --max-width: 414px;
+            --main-padding: 24px;
             --primary-color: #ff0000;
             --insta-color: #e1306c;
             --button-radius: 24px;
@@ -21,55 +21,60 @@
             background-image: linear-gradient(#ffffff,#bec7d4, #384767);
             display: flex;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
         .container {
             max-width: var(--max-width);
-            width: 100%;
-            min-height: 100vh;
+            width: 100vw;
             padding: var(--main-padding);
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
+            transform: scale(0.97); /* redução proporcional de 3% */
+            transform-origin: center;
         }
         .profile-pic{
-            width: 28vw;
-            max-width: 120px;
-            aspect-ratio: 1/1;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             background: #ffffff url('https://via.placeholder.com/120') center/cover no-repeat;
-            margin-bottom: 16px;
-            border: 4px solid #013a63;
+            margin-bottom: 20px;
+            border: 4px solid #fff;
+            border-color: #013a63;
             box-shadow: var(--shadow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            align-content: center;
+            text-align: center;
         }
         #Logo {
-            width: 80%;
-            height: auto;
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
             border-radius: 50%;
         }
         .name {
+            align-items: center;
             text-align: center;
-            margin: 0;
-            font-size: 1.4rem;
+            width: 150px;
+            margin: -10px;
+            font-size: 1.5rem;
             font-weight: bold;
-            width: 80%;
-            height: auto;
+            margin-bottom: 1px;
         }
         .role {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #666;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-align: center;
         }
         .description {
-            font-size: 0.7rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
             color: #013a63;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
+            margin-top: -10px;
             padding: 0 8px;
         }
         .verso{
@@ -80,40 +85,38 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
-        iframe {
-            width: 100%;
-            max-width: 100%;
-            aspect-ratio: 16/9;
+        video, iframe {
+            width: auto;
+            height: 171px;
+            max-width: 350px;
             border-radius: 16px;
             box-shadow: var(--shadow);
+            outline: none;
             background: #000;
         }
         .actions {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
             margin-bottom: 20px;
         }
-        .yt-btn, .insta-btn, .location-btn {
+        .yt-btn, .insta-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            padding: 10px 20px;
+            padding: 10px 24px;
             border: none;
             border-radius: var(--button-radius);
             font-size: 1rem;
             font-weight: 500;
+            cursor: pointer;
             text-decoration: none;
             transition: background 0.2s;
             box-shadow: var(--shadow);
-            width: 80%;
-            max-width: 320px;
-            text-align: center;
         }
         .yt-btn {
             background: var(--primary-color);
@@ -122,32 +125,35 @@
         .yt-btn:hover {
             background: #cc0000;
         }
-        .insta-btn, .location-btn {
+        .insta-btn {
             background: var(--insta-color);
             color: #fff;
         }
         .insta-btn:hover {
             background: #b92d5e;
         }
-        .location-btn:hover {
-            background: #122c9e;
-        }
         .icon {
             display: flex;
             align-items: center;
             font-size: 1.3em;
         }
-        footer {
-            text-align: center;
-            padding: 10px 5px;
-            margin-top: auto;
-            color: #002c4c;
-            font-size: 0.7rem;
-        }
-        /* Telas maiores (tablets/desktop) */
-        @media (min-width: 768px) {
+        @media (min-width: 475px) {
             .container {
-                width: 60%;
+                width: 80vw;
+                padding: 5px;
+            }
+            .profile-pic .logo{
+                width: 120px;
+                height: 120px;
+            }
+            .video-section video, .video-section iframe {
+                max-width: 80vw;
+            }
+            .description {
+                font-size: 10px;
+                margin-bottom: 8px;
+                margin-top: -15px;
+                padding: 0 5px;
             }
         }
     </style>
@@ -155,18 +161,22 @@
 <body>
     <div class="container">
         <div class="profile-pic">
-            <img id="Logo" src="Logo.png" alt="Logo Louvares">
+            <img id="Logo" src="Logo.png">
         </div>
         <div class="name">
-            <img class="name" src="nome.png" alt="Louvares Vocal">
+            <img class="name" src="nome.png" alt="">
         </div>
         <div class="description">
             <h3>Cantarei ao Senhor enquanto eu viver; <br> louvores ao meu Deus durante a minha vida. <br> <small class="verso">"SALMOS 104:33"</small></h3>
         </div>
         <div class="video-section">
             <iframe
+                id="yt-iframe"
+                width="350"
+                height="197"
                 src="https://www.youtube.com/embed/maklU1Z18B4?autoplay=1&loop=1&playlist=maklU1Z18B4&controls=0&mute=0&modestbranding=1&rel=0"
                 title="YouTube video player"
+                frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
             </iframe>
@@ -184,7 +194,7 @@
                 </span>
                 Siga nosso Instagram
             </a>
-            <a class="location-btn" href="https://igrejas.adventistas.org/#%22" target="_blank" rel="noopener" style="background: #4285f4;">
+            <a class="yt-btn" href="https://igrejas.adventistas.org/#%22" target="_blank" rel="noopener" style="background: #4285f4;">
                 <span class="icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -193,14 +203,13 @@
                 Encontre uma Igreja
             </a>
         </div>
-        <div style="text-align: center;padding: 10px;color: #ffffff; font-size: 0.8rem;">
-            <div style="color: #cc0000;font-size: 0.9rem;">contato via instagram</div>
+        <div style="text-align: center;padding: 10px;margin-top: -20px;margin-bottom: 10px; color: #ffffff; font-size: 12px;font-family: 'Open Sans', sans-serif;">
+            <div style="color: #cc0000;font-size: 12px;">contato via instagram</div>
             <p>Louvares Vocal é um ministério de louvor e adoração, <br> dedicado a levar a mensagem de Cristo através da música. 
                 <br> Junte-se a nós nessa jornada de fé e louvor!</p>
         </div>
-        <footer>
-            <p>Louvares Vocal &copy; 2025. Todos os direitos reservados</p>
-        </footer>
-    </div>
+    <footer style="text-align: center; padding: 0px; margin-bottom: 5px; color: #002c4c; font-size: 10px;">
+        <p>Louvares Vocal &copy; 2025. Todos os direitos reservados</p>
+    </footer>
 </body>
 </html>
